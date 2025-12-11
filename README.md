@@ -1,27 +1,30 @@
 # Claude Plugins
 
-Personal Claude Code plugins and configuration.
-
-## Plugins
-
-### multi-agent
-
-Multi-agent orchestration with Gemini and Codex. See [multi-agent/README.md](multi-agent/README.md).
-
-**Commands:**
-- `/multi-agent:fullauto` - High-autonomy mode with multi-agent orchestration
-- `/multi-agent:ask-gemini` - Quick Gemini consultation
-- `/multi-agent:ask-codex` - Codex code review
+Personal Claude Code plugin marketplace.
 
 ## Installation
 
-Symlink plugins to your project or set up a local marketplace:
-
 ```bash
-# Project-local
-ln -s ~/git/ksawerykarwacki/claude-plugins/multi-agent ./multi-agent
+# Add this marketplace to Claude Code
+claude plugin marketplace add https://github.com/ksawerykarwacki/claude-plugins
 
-# Or global marketplace
-mkdir -p ~/.claude-plugins/.claude-plugin
-ln -s ~/git/ksawerykarwacki/claude-plugins/multi-agent ~/.claude-plugins/multi-agent
+# Install a plugin
+claude plugin install multi-agent@ksawery-plugins
 ```
+
+**Alternative: Project-local symlink**
+```bash
+ln -s ~/git/ksawerykarwacki/claude-plugins/multi-agent ./multi-agent
+```
+
+## Available Plugins
+
+| Plugin | Description |
+|--------|-------------|
+| [multi-agent](multi-agent/) | Multi-agent orchestration with Gemini and Codex |
+
+## Adding New Plugins
+
+1. Create a new directory at repo root: `my-plugin/`
+2. Add `.claude-plugin/plugin.json` inside it
+3. Update `.claude-plugin/marketplace.json` to include it

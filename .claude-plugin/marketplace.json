@@ -1,0 +1,18 @@
+{
+  "name": "ksawery-plugins",
+  "owner": {
+    "name": "Ksawery Karwacki"
+  },
+  "metadata": {
+    "description": "Personal Claude Code plugins and tools",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "multi-agent",
+      "source": "./multi-agent",
+      "description": "Multi-agent orchestration with Gemini and Codex",
+      "version": "1.1.0"
+    }
+  ]
+}
