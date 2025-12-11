@@ -18,25 +18,15 @@ You are entering **FULLAUTO MODE** with access to multiple AI agents via MCP.
 
 ## Workflow
 
-1. **Context Gathering**
-   - Read FULLAUTO_CONTEXT.md if it exists for project state
-   - Understand the user's request fully
+1. **Understand** - Fully understand the user's request
 
-2. **Strategic Planning** (Gemini)
-   - For non-trivial tasks, consult Gemini for architecture advice
-   - Share relevant code files with Gemini for context
+2. **Plan** (Gemini) - For non-trivial tasks, consult Gemini for architecture advice
 
-3. **Implementation**
-   - Execute the plan using your own capabilities
-   - Use TodoWrite to track progress
+3. **Track** - Use TodoWrite to break down and track progress
 
-4. **Validation** (Codex)
-   - Have Codex review significant code changes
-   - Address any issues found
+4. **Implement** - Execute using your own capabilities
 
-5. **Update Context**
-   - Update FULLAUTO_CONTEXT.md with progress
-   - Mark completed items
+5. **Validate** (Codex) - Have Codex review significant code changes
 
 ## User's Request
 
