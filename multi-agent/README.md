@@ -80,6 +80,10 @@ You don't need to explicitly call these - Claude uses them based on context.
 multi-agent/
 ├── .claude-plugin/plugin.json    # Plugin identity
 ├── .mcp.json                     # MCP server configuration
+├── agents/
+│   ├── gemini-strategist.md     # Architecture planning agent
+│   ├── codex-critic.md          # Complaining pair programmer
+│   └── multi-explorer.md        # Alternative exploration agent
 ├── commands/
 │   ├── fullauto.md              # Full orchestration workflow
 │   ├── ask-gemini.md            # Quick Gemini consultation
@@ -87,6 +91,46 @@ multi-agent/
 └── skills/
     ├── gemini-architect/        # Architecture decision skill
     └── codex-reviewer/          # Code review skill
+```
+
+## Agents
+
+The plugin includes specialized agents that can be delegated complex tasks:
+
+| Agent | Role | When to Use |
+|-------|------|-------------|
+| `gemini-strategist` | Architecture advisor | BEFORE implementing - "How should we build this?" |
+| `codex-critic` | Complaining pair programmer | AFTER implementing - "What's wrong with this code?" |
+| `multi-explorer` | Alternative explorer | BEFORE deciding - "What are the different approaches?" |
+
+### The Workflow
+
+```
+User Request
+    │
+    ▼
+Opus (Main Coder) ─────────────────────────────
+    │                                          │
+    ├── BEFORE: gemini-strategist              │
+    │   "How should we architect this?"        │
+    │                                          │
+    ├── IMPLEMENT: Opus writes code            │
+    │                                          │
+    └── AFTER: codex-critic                    │
+        "What's wrong with this code?"         │
+```
+
+### Example Usage
+
+```bash
+# Get architecture advice before coding
+"Use gemini-strategist to plan how to add user authentication"
+
+# After Opus implements, get critical review
+"Have codex-critic review the authentication code I just wrote"
+
+# Explore alternatives before committing
+"Use multi-explorer to compare different caching strategies"
 ```
 
 ## MCP Servers
