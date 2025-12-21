@@ -3,13 +3,9 @@
   "hooks": {
     "SessionStart": [
       {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/load-agents.sh",
-            "statusMessage": "Loading AGENTS.md files..."
-          }
-        ]
+        "type": "command",
+        "command": "${CLAUDE_PLUGIN_ROOT}/scripts/load-agents.sh",
+        "statusMessage": "Loading AGENTS.md files..."
       }
     ]
   }
