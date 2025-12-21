@@ -1,5 +1,5 @@
 {
   "name": "agents-md-loader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Automatically discovers and loads AGENTS.md files into Claude's context at session start"
 }
