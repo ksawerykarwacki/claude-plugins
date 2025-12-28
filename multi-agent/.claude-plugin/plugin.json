@@ -1,6 +1,6 @@
 {
   "name": "multi-agent",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Multi-agent orchestration with Gemini and Codex for Claude Code",
   "agents": [
     "./agents/codex-critic.md",

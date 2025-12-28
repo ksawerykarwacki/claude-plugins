@@ -18,6 +18,27 @@ $ARGUMENTS
 2. **Understand Before Acting** - Never implement without understanding the codebase first
 3. **Ask, Don't Assume** - Use AskUserQuestion for ambiguities
 4. **Review Before Completion** - Always validate significant work
+5. **ALWAYS Specify Models** - Never call MCP tools without the `model` parameter
+
+## CRITICAL: Model Parameter Requirements
+
+**YOU MUST ALWAYS pass the `model` parameter when calling gemini or codex MCP tools.**
+
+Failing to specify a model will use outdated defaults. This is NOT acceptable.
+
+```
+# WRONG - will use outdated gemini-2.5-pro
+mcp__plugin_multi-agent_gemini__ask-gemini(prompt: "...")
+
+# CORRECT - explicitly specifies model
+mcp__plugin_multi-agent_gemini__ask-gemini(prompt: "...", model: "gemini-3-pro-preview")
+```
+
+**Preferred approach**: Use wrapper commands instead of direct MCP calls:
+- `/multi-agent:ask-gemini` - enforces gemini-3-flash-preview
+- `/multi-agent:brainstorm` - enforces gemini-3-pro-preview
+- `/multi-agent:ask-codex` - enforces gpt-5.2-codex
+- Or use the Task tool with specialized agents (gemini-strategist, codex-critic, etc.)
 
 ## Available Agents
 

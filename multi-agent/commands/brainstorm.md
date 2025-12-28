@@ -21,11 +21,17 @@ $ARGUMENTS
    - **lateral**: Unexpected connections from unrelated fields
    - **auto**: Let Gemini choose the best approach
 
-3. Call the gemini MCP **brainstorm** tool with:
-   - `model: "gemini-3-pro-preview"` (deep thinking for ideation)
-   - `methodology`: based on the challenge type
-   - `domain`: if relevant (software, business, creative, etc.)
-   - `ideaCount`: 10-15 for broad exploration, fewer for focused refinement
+3. **CRITICAL**: Call the gemini MCP **brainstorm** tool with these EXACT parameters:
+   ```
+   prompt: "<the brainstorming challenge>"
+   model: "gemini-3-pro-preview"
+   methodology: "auto"  # or specific: divergent, convergent, scamper, design-thinking, lateral
+   domain: "software"  # or relevant domain
+   ideaCount: 12
+   includeAnalysis: true
+   ```
+
+   **Model Enforcement**: This command REQUIRES `model: "gemini-3-pro-preview"`. Do NOT omit the model parameter.
 
 4. Present the ideas with:
    - Grouped by theme or approach
