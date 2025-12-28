@@ -23,10 +23,13 @@ $ARGUMENTS
 
 ### External Agents (via MCP Tools)
 
-| Agent | MCP Tool | Use For |
-|-------|----------|---------|
-| **Gemini** | `gemini` | Architecture, system design, large codebase analysis, planning |
-| **Codex** | `codex` | Code review, implementation validation, bug detection, security |
+| Agent | MCP Tool | Model | Use For |
+|-------|----------|-------|---------|
+| **Gemini Pro** | `gemini` | `gemini-3-pro-preview` | Architecture, system design, planning |
+| **Gemini Flash** | `gemini` | `gemini-3-flash-preview` | Quick checks, validation |
+| **Codex Max** | `codex` | `gpt-5.1-codex-max` | Deep analysis, project-scale refactors |
+| **Codex** | `codex` | `gpt-5.2-codex` | Agentic tasks, quick reviews |
+| **Codex Mini** | `codex` | `gpt-5.1-codex-mini` | Quick code checks |
 
 ### Built-in Agents (via Task Tool)
 
@@ -68,9 +71,9 @@ Execute these phases in order. Use TodoWrite to track progress through each phas
    - Existing conventions and patterns
    - Related functionality
    - Integration points
-3. For complex tasks, consult **Gemini** for holistic analysis:
+3. For complex tasks, consult **Gemini Pro** for holistic analysis:
    ```
-   Use gemini MCP tool: "Analyze these files and explain the architecture patterns..."
+   Use gemini MCP tool with model="gemini-3-pro-preview": "Analyze these files and explain the architecture patterns..."
    ```
 
 **Output**: Understanding of codebase context and conventions to follow.
@@ -82,9 +85,9 @@ Execute these phases in order. Use TodoWrite to track progress through each phas
 **Goal**: Design the solution before implementing.
 
 **Actions**:
-1. **For non-trivial tasks** (>3 files or architectural decisions), consult **Gemini**:
+1. **For non-trivial tasks** (>3 files or architectural decisions), consult **Gemini Pro**:
    ```
-   Use gemini MCP tool: "Design an architecture for [feature] that follows the patterns in [files]..."
+   Use gemini MCP tool with model="gemini-3-pro-preview": "Design an architecture for [feature] that follows the patterns in [files]..."
    ```
 
 2. **Validate the design** before implementing:
@@ -139,11 +142,11 @@ Execute these phases in order. Use TodoWrite to track progress through each phas
 2. **For significant changes**, launch parallel reviews:
    - **Codex** for code quality and bugs:
      ```
-     Use codex MCP tool: "Review for bugs, edge cases, and security issues..."
+     Use codex MCP tool with model="gpt-5.2-codex": "Review for bugs, edge cases, and security issues..."
      ```
-   - **Gemini** for architectural consistency:
+   - **Gemini Flash** for quick validation (or Pro for deep analysis):
      ```
-     Use gemini MCP tool: "Does this implementation align with the existing patterns?"
+     Use gemini MCP tool with model="gemini-3-flash-preview": "Does this implementation align with the existing patterns?"
      ```
 
 3. **Filter by confidence**: Only address issues with high confidence (clear problems, not nitpicks)
@@ -184,17 +187,28 @@ Is this a simple task (< 3 files, obvious approach)?
 └── NO → Continue...
 
 Does it require architectural decisions?
-├── YES → Consult Gemini for architecture
+├── YES → Use Gemini Pro (gemini-3-pro-preview) for architecture
 └── NO → Continue...
 
 Are there multiple valid approaches?
-├── YES → Consult Gemini for trade-off analysis
+├── YES → Use Gemini Pro for trade-off analysis
+└── NO → Continue...
+
+Need quick validation?
+├── YES → Use Gemini Flash (gemini-3-flash-preview)
 └── NO → Continue...
 
 Is the implementation significant (> 20 lines)?
 ├── YES → Have Codex review
 └── NO → Skip review
 ```
+
+**Model Selection Guide:**
+- **gemini-3-pro-preview**: Architecture, planning, deep analysis, brainstorming
+- **gemini-3-flash-preview**: Quick checks, validation, simple questions
+- **gpt-5.1-codex-max**: Deep analysis, project-scale refactors, complex debugging (used by codex-critic)
+- **gpt-5.2-codex**: Agentic tasks, reliable tool calling, quick reviews
+- **gpt-5.1-codex-mini**: Quick code checks, simple validation
 
 ## Rules of Engagement
 

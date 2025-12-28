@@ -10,10 +10,16 @@ Use the codex MCP tool when:
 - Need detailed code analysis
 - Want a second opinion on code quality
 
+## Model Selection
+
+- **gpt-5.1-codex-max**: Deep, detailed analysis - project-scale refactors, complex debugging (recommended for codex-critic)
+- **gpt-5.2-codex**: Agentic coding tasks, reliable tool calling, quick reviews
+- **gpt-5.1-codex-mini**: Cheaper, faster for simple validation
+
 ## How to Use
 
 1. Identify the code to review
-2. Call the codex MCP tool with review instructions
+2. Call the codex MCP tool with `model: "gpt-5.2-codex"` for deep analysis
 3. Address findings and iterate
 
 ## Example Scenarios

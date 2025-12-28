@@ -48,6 +48,18 @@ EOF
 # /plugin install multi-agent@local-plugins
 ```
 
+## Models
+
+This plugin uses the latest models from each provider:
+
+| Provider | Model | Use For |
+|----------|-------|---------|
+| Gemini | `gemini-3-pro-preview` | Architecture, planning, brainstorming |
+| Gemini | `gemini-3-flash-preview` | Quick checks, validation |
+| Codex | `gpt-5.1-codex-max` | Deep analysis, project-scale refactors (codex-critic) |
+| Codex | `gpt-5.2-codex` | Agentic tasks, quick reviews |
+| Codex | `gpt-5.1-codex-mini` | Quick code checks |
+
 ## Usage
 
 ### Commands
@@ -58,10 +70,13 @@ All commands are namespaced with `multi-agent:`:
 # Full orchestration mode - uses both Gemini and Codex
 /multi-agent:fullauto implement a caching layer for the API
 
-# Quick Gemini consultation for architecture advice
+# Quick Gemini consultation (uses gemini-3-flash-preview)
 /multi-agent:ask-gemini what's the best approach for handling auth?
 
-# Codex code review
+# Creative brainstorming (uses gemini-3-pro-preview)
+/multi-agent:brainstorm ways to improve our API performance
+
+# Codex code review (uses gpt-5.2-codex)
 /multi-agent:ask-codex review the payment processing module
 ```
 
@@ -89,7 +104,8 @@ multi-agent/
 ├── commands/
 │   ├── fullauto.md              # Full orchestration workflow
 │   ├── ask-gemini.md            # Quick Gemini consultation
-│   └── ask-codex.md             # Codex code review
+│   ├── ask-codex.md             # Codex code review
+│   └── brainstorm.md            # Creative ideation with Gemini
 └── skills/
     ├── gemini-architect/        # Architecture decision skill
     ├── gemini-reviewer/         # Design/plan review skill

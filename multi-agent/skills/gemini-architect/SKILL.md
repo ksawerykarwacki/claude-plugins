@@ -11,10 +11,15 @@ Use the gemini MCP tool when:
 - Evaluating trade-offs between approaches
 - Need a "second opinion" on complex design choices
 
+## Model Selection
+
+- **gemini-3-pro-preview**: Architecture, planning, deep analysis (recommended)
+- **gemini-3-flash-preview**: Quick checks, validation, simple questions
+
 ## How to Use
 
 1. Gather relevant context (files, requirements, constraints)
-2. Call the gemini MCP tool with a clear question
+2. Call the gemini MCP tool with `model: "gemini-3-pro-preview"` for deep analysis
 3. Review Gemini's response and integrate insights
 
 ## Example Scenarios

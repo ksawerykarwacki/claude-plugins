@@ -11,6 +11,10 @@ Use the gemini-reviewer agent when:
 - Checking if a plan accounts for edge cases
 - Ensuring consistency with existing patterns
 
+## Model Used
+
+The gemini-reviewer agent uses **gemini-3-pro-preview** for deep analytical review.
+
 ## How to Use
 
 1. Prepare the design/plan to be reviewed (document, code outline, or description)
