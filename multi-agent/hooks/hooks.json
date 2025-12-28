@@ -1,0 +1,27 @@
+{
+  "description": "Enforce correct model parameters on Gemini and Codex MCP tool calls",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__plugin_multi-agent_gemini__.*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "You are about to call a Gemini MCP tool. CRITICAL: Check if you included the `model` parameter.\n\nRequired models:\n- ask-gemini: model=\"gemini-3-flash-preview\" (quick) or model=\"gemini-3-pro-preview\" (deep)\n- brainstorm: model=\"gemini-3-pro-preview\" (always)\n\nIf you did NOT specify a model parameter, you MUST block this call and retry with the correct model. The default (gemini-2.5-pro) is outdated.\n\nDecide: approve if model is specified, block if model is missing.",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__plugin_multi-agent_codex__.*",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "You are about to call a Codex MCP tool. CRITICAL: Check if you included the `model` parameter.\n\nRequired models:\n- Deep analysis: model=\"gpt-5.1-codex-max\"\n- Agentic tasks: model=\"gpt-5.2-codex\"\n- Quick checks: model=\"gpt-5.1-codex-mini\"\n\nIf you did NOT specify a model parameter, you MUST block this call and retry with the correct model.\n\nDecide: approve if model is specified, block if model is missing.",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
